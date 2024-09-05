@@ -117,11 +117,45 @@ CREATE OR REPLACE PACKAGE BODY PKG_ETL_VENDAS AS
 
     PROCEDURE RUN_ETL_VENDAS IS
     BEGIN
-        LOAD_DIM_TEMPO;
-        LOAD_DIM_PRODUTO;
-        LOAD_DIM_CLIENTE;
-        LOAD_DIM_VENDEDOR;
-        LOAD_FATO_VENDAS;
+        BEGIN
+            LOAD_DIM_TEMPO;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error in LOAD_DIM_TEMPO: '
+                                     || SQLERRM);
+        END;
+
+        BEGIN
+            LOAD_DIM_PRODUTO;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error in LOAD_DIM_PRODUTO: '
+                                     || SQLERRM);
+        END;
+
+        BEGIN
+            LOAD_DIM_CLIENTE;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error in LOAD_DIM_CLIENTE: '
+                                     || SQLERRM);
+        END;
+
+        BEGIN
+            LOAD_DIM_VENDEDOR;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error in LOAD_DIM_VENDEDOR: '
+                                     || SQLERRM);
+        END;
+
+        BEGIN
+            LOAD_FATO_VENDAS;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error in LOAD_FATO_VENDAS: '
+                                     || SQLERRM);
+        END;
     END RUN_ETL_VENDAS;
 END PKG_ETL_VENDAS;
 /
