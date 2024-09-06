@@ -84,5 +84,3 @@
 - _Chaves Primárias_: Cada tabela dimensional possui uma chave primária (COD_PRODUTO, COD_CLIENTE, COD_VENDEDOR, DATA_VENDA).
 - _Chaves Estrangeiras_: A tabela FATOVENDAS utiliza chaves estrangeiras (COD_PRODUTO, COD_CLIENTE, COD_VENDEDOR, DATA_VENDA) para garantir a integridade referencial com as tabelas dimensionais.
 - _Atributos de Atividade_: As tabelas DIMPRODUTO e DIMCLIENTE possuem um campo STA_ATIVO para indicar se os registros estão ativos, facilitando o gerenciamento de dados históricos.
-
-Este dicionário de dados fornece uma visão clara e detalhada da estrutura e significado das tabelas e colunas do modelo de dados, facilitando o entendimento e o uso correto do banco de dados.
